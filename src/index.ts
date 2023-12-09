@@ -2,6 +2,7 @@ import P5 from "p5";
 import { sketches } from "./sketches";
 import { setupPlayPauseButton } from "./player/playPauseButton";
 import { setupRestartButton } from "./player/restartButton";
+import { setupSketchSelect } from "./player/sketchSelect";
 
 export type P5Closure = (p: P5) => void;
 
@@ -10,11 +11,9 @@ let currentSketch: P5Closure | undefined = Object.values(sketches)[0];
 let p5Instance: P5 | undefined =
   currentSketch === undefined ? undefined : new P5(currentSketch, root);
 
-function getP5Instance() {
-  return p5Instance;
-}
-setupPlayPauseButton({ getP5Instance });
+setupPlayPauseButton({ getP5Instance: () => p5Instance });
 setupRestartButton({ onClick: () => switchSketch(currentSketch) });
+setupSketchSelect({ sketches, switchSketch });
 
 function switchSketch(sketch: P5Closure | undefined) {
   currentSketch = sketch;
@@ -23,16 +22,3 @@ function switchSketch(sketch: P5Closure | undefined) {
     p5Instance = new P5(currentSketch, root);
   }
 }
-
-const sketchSelect = document.getElementById("sketch-select")!;
-Object.keys(sketches).forEach((sketchName) => {
-  const option = document.createElement("option");
-  option.value = sketchName;
-  option.textContent = sketchName;
-  sketchSelect.appendChild(option);
-});
-sketchSelect.onchange = (e: Event) => {
-  const target = e.target as HTMLSelectElement;
-  const sketchName = target.value;
-  switchSketch(sketches[sketchName]);
-};
