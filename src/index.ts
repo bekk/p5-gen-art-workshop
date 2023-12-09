@@ -3,11 +3,13 @@ import { sketches } from "./sketches";
 import { setupPlayPauseButton } from "./player/playPauseButton";
 import { setupRestartButton } from "./player/restartButton";
 import { setupSketchSelect } from "./player/sketchSelect";
+import { sketchCache as sketchCache } from "./player/sketchCache";
 
 export type P5Closure = (p: P5) => void;
 
 const root = document.getElementById("app")!;
-let currentSketch: P5Closure | undefined = Object.values(sketches)[0];
+let currentSketch: P5Closure | undefined =
+  sketches[getInitiallySelectedSketch(sketches)];
 let p5Instance: P5 | undefined =
   currentSketch === undefined ? undefined : new P5(currentSketch, root);
 
@@ -21,4 +23,12 @@ function switchSketch(sketch: P5Closure | undefined) {
   if (currentSketch !== undefined) {
     p5Instance = new P5(currentSketch, root);
   }
+}
+
+function getInitiallySelectedSketch(sketches: Record<string, P5Closure>) {
+  const sketchName = sketchCache.get();
+  if (sketchName !== null && sketchName in sketches) {
+    return sketchName;
+  }
+  return Object.keys(sketches)[0];
 }

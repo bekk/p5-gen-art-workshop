@@ -1,4 +1,5 @@
 import { P5Closure } from "..";
+import { sketchCache } from "./sketchCache";
 
 export function setupSketchSelect({
   sketches,
@@ -21,15 +22,20 @@ export function setupSketchSelect({
     "rounded-md",
     "hover:shadow-md"
   );
+  const initiallySelectedSketch = sketchCache.get();
   Object.keys(sketches).forEach((sketchName) => {
     const option = document.createElement("option");
     option.value = sketchName;
     option.textContent = sketchName;
+    if (sketchName === initiallySelectedSketch) {
+      option.selected = true;
+    }
     selectElement.appendChild(option);
   });
   selectElement.onchange = (e: Event) => {
     const target = e.target as HTMLSelectElement;
     const sketchName = target.value;
+    sketchCache.set(sketchName);
     switchSketch(sketches[sketchName]);
   };
 }
