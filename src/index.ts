@@ -1,5 +1,6 @@
 import P5 from "p5";
 import { sketches } from "./sketches";
+import { setupPlayPauseButton } from "./player/playPauseButton";
 
 export type P5Closure = (p: P5) => void;
 
@@ -8,20 +9,10 @@ let currentSketch: P5Closure | undefined = Object.values(sketches)[0];
 let p5Instance: P5 | undefined =
   currentSketch === undefined ? undefined : new P5(currentSketch, root);
 
-const playButton = document.getElementById("play-pause-button")!;
-playButton.onclick = () => {
-  if (p5Instance === undefined) {
-    return;
-  }
-  if (p5Instance.isLooping()) {
-    p5Instance.noLoop();
-    playButton.textContent = "Play";
-  } else {
-    p5Instance.loop();
-    playButton.textContent = "Pause";
-  }
-};
-
+function getP5Instance() {
+  return p5Instance;
+}
+setupPlayPauseButton({ getP5Instance });
 const restartButton = document.getElementById("restart-button")!;
 restartButton.onclick = () => {
   p5Instance?.remove();
