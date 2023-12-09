@@ -1,6 +1,7 @@
 import P5 from "p5";
 import { sketches } from "./sketches";
 import { setupPlayPauseButton } from "./player/playPauseButton";
+import { setupRestartButton } from "./player/restartButton";
 
 export type P5Closure = (p: P5) => void;
 
@@ -13,18 +14,14 @@ function getP5Instance() {
   return p5Instance;
 }
 setupPlayPauseButton({ getP5Instance });
-const restartButton = document.getElementById("restart-button")!;
-restartButton.onclick = () => {
+setupRestartButton({ onClick: () => switchSketch(currentSketch) });
+
+function switchSketch(sketch: P5Closure | undefined) {
+  currentSketch = sketch;
   p5Instance?.remove();
   if (currentSketch !== undefined) {
     p5Instance = new P5(currentSketch, root);
   }
-};
-
-function switchSketch(sketch: P5Closure) {
-  currentSketch = sketch;
-  p5Instance?.remove();
-  p5Instance = new P5(currentSketch, root);
 }
 
 const sketchSelect = document.getElementById("sketch-select")!;
