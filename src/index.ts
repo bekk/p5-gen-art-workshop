@@ -4,6 +4,7 @@ import { setupPlayPauseButton } from "./player/playPauseButton";
 import { setupRestartButton } from "./player/restartButton";
 import { setupSketchSelect } from "./player/sketchSelect";
 import { sketchCache as sketchCache } from "./player/sketchCache";
+import { setupCopyToClipboardButton } from "./player/copyToClipboardButton";
 
 export type P5Closure = (p: P5) => void;
 
@@ -16,6 +17,7 @@ let p5Instance: P5 | undefined =
 setupPlayPauseButton({ getP5Instance: () => p5Instance });
 setupRestartButton({ onClick: () => switchSketch(currentSketch) });
 setupSketchSelect({ sketches, switchSketch });
+setupCopyToClipboardButton({ root });
 
 function switchSketch(sketch: P5Closure | undefined) {
   currentSketch = sketch;
