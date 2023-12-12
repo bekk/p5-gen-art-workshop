@@ -6,6 +6,7 @@ import { setupSketchSelect } from "./player/sketchSelect";
 import { sketchCache as sketchCache } from "./player/sketchCache";
 import { setupCopyToClipboardButton } from "./player/copyToClipboardButton";
 import { setupSaveImageButton } from "./player/saveImageButton";
+import "./index.css";
 
 export type P5Closure = (p: P5) => void;
 
