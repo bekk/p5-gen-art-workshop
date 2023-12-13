@@ -1,8 +1,14 @@
 import P5 from "p5";
-import { mySketch } from "./mySketch.js";
+import { snowflake } from "./snowflake";
+import { tiledDiagonal } from "./tiledDiagonal";
+import { quarterCircles } from "./quarterCircles";
+import { spinningCircle } from "./spinningCircle";
 
 export type SketchClosure = (p: P5) => void;
 
 export const sketches: Record<string, SketchClosure> = {
-  "Min sketch (JS)": mySketch,
+  "Snurrende sirkel": spinningCircle,
+  "Flislagte diagonaler": tiledDiagonal,
+  Kvartsirkler: quarterCircles,
+  Snøfnugg: snowflake,
 };
