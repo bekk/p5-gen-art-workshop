@@ -1,3 +1,7 @@
+## Ser du etter slides?
+
+De ligger i mappa [slides](slides/).
+
 ## Installasjon og oppsett
 
 Installer det du trenger ved å kjøre
