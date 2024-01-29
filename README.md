@@ -190,7 +190,7 @@ Standard port er [http://localhost:5173](http://localhost:5173).
 
 Du kan lage en ny sketch ved å opprette en fil i mappa [src/sketches](src/sketches/).
 
-For å kunne velge den i visningen i nettleseren, må du også registrere sketchen din ved å legge den til i [src/sketches/index.ts](src/sketches/index.ts):
+For å kunne velge den i visningen i nettleseren, må du også registrere sketchen din ved å legge den til i [src/registerSketches.ts](src/registerSketches.ts):
 
 ```typescript
 // andre imports...
@@ -214,7 +214,7 @@ import P5 from "p5";
 
 // bruk denne fila som en mal på hvordan sketcher kan utformes!
 // kopier fila, husk å endre navnet på både fila og funksjonen.
-// oppdater også src/sketches/index.ts slik at den peker på den nye fila.
+// oppdater også src/registerSketches.ts slik at den peker på den nye fila.
 export function sketchTemplate(p5: P5) {
   // setup-funksjonen kjører én gang når siden lastes inn.
   p5.setup = () => {
@@ -242,7 +242,7 @@ For JavaScript-brukere er det [src/sketches/\_template.js](src/sketches/_templat
 ```javascript
 // bruk denne fila som en mal på hvordan sketcher kan utformes!
 // kopier fila, husk å endre navnet på både fila og funksjonen.
-// oppdater også src/sketches/index.ts slik at den peker på den nye fila.
+// oppdater også src/registerSketches.ts slik at den peker på den nye fila.
 export function mySketch(p5) {
   // setup-funksjonen kjører én gang når siden lastes inn.
 

@@ -1,8 +1,8 @@
 import P5 from "p5";
-import { snowflake } from "./snowflake";
-import { tiledDiagonal } from "./tiledDiagonal";
-import { quarterCircles } from "./quarterCircles";
-import { spinningCircle } from "./spinningCircle";
+import { snowflake } from "./sketches/snowflake";
+import { tiledDiagonal } from "./sketches/tiledDiagonal";
+import { quarterCircles } from "./sketches/quarterCircles";
+import { spinningCircle } from "./sketches/spinningCircle";
 
 export type SketchClosure = (p: P5) => void;
 

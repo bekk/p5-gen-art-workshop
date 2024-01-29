@@ -1,5 +1,5 @@
 import P5 from "p5";
-import { sketches } from "./sketches";
+import { sketches } from "./registerSketches";
 import { setupPlayPauseButton } from "./player/playPauseButton";
 import { setupRestartButton } from "./player/restartButton";
 import { setupSketchSelect } from "./player/sketchSelect";

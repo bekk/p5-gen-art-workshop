@@ -2,7 +2,7 @@ import P5 from "p5";
 
 // bruk denne fila som en mal på hvordan sketcher kan utformes!
 // kopier fila, husk å endre navnet på både fila og funksjonen.
-// oppdater også src/sketches/index.ts slik at den peker på den nye fila.
+// oppdater også src/registerSketches.ts slik at den peker på den nye fila.
 export function sketchTemplate(p5: P5) {
   // setup-funksjonen kjører én gang når siden lastes inn.
   p5.setup = () => {
